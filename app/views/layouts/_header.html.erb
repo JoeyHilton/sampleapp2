@@ -1,12 +1,16 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "sample app", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", help_path %></li>
-        <li><%= link_to "Log in", '#' %></li>
-      </ul>
-    </nav>
+    <%= link_to "ruby on rails", root_path, id: "logo" %>
+    <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+      Navigation
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <li role="presentation"><%= link_to "", root_path, class: "glyphicon glyphicon-home" %> Home</li>
+      <li role="presentation"><%= link_to "", help_path, class: "glyphicon glyphicon-wrench" %> Help</li>
+      <li role="presentation"><%= link_to "", '#', class: "glyphicon glyphicon-user" %> Log-in</li>
+    </ul>
+  </div>
   </div>
 </header>
