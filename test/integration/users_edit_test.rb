@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class UsersEditTest < ActionDispatch::IntegrationTest
+
   def setup
     @user = users(:michael)
   end
@@ -31,5 +32,15 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     @user.reload
     assert_equal @user.name,  name
     assert_equal @user.email, email
+  end
+
+  test "friendly forwarding only forwards to the given URL the first time" do
+    get edit_user_path(@user)
+    log_in_as(@user)
+    assert_redirected_to edit_user_path(@user)
+    delete logout_path(@user)
+    assert_not is_logged_in?
+    log_in_as(@user)
+    assert_redirected_to user_path(@user)
   end
 end
